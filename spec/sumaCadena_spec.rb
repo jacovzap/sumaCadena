@@ -19,6 +19,12 @@ RSpec.describe "Calculadora De Cadenas" do
     it "Deberia devolver el numero 14 para la cadena 5, 1, 6 y 2" do
         expect(calcularCadena("5,1,6,2")).to eq(14)
     end
+
+    it "Deberia devolver el numero 14 para la cadena 5, 1, 6, 2, y 1999" do
+        expect(calcularCadena("5,1,6,2,1999")).to eq(14)
+    end
+
+    
 end
 
 
@@ -28,7 +34,9 @@ def calcularCadena(cadena)
     suma = 0
     arreglo=cadena.split(',')
     while i < cadena.length do
-        suma = arreglo[i].to_i + suma
+        if arreglo[i].to_i < 1000 then
+            suma = arreglo[i].to_i + suma
+        end
         i = i+1
     end
     return suma
